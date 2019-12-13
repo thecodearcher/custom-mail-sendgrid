@@ -192,7 +192,7 @@ Now open up the *MailingController* (`app/Http/Controllers/MailingController.php
             /* Send mail using sendgrid instance */
             $response = $sendgrid->send($email);
             if ($response->statusCode() == 202) {
-                return redirect()->route('welcome')->with(['success' => "E-mails successfully sent out!!"]);
+                return back()->with(['success' => "E-mails successfully sent out!!"]);
             }
     
             return back()->withErrors(json_decode($response->body())->errors);
